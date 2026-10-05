@@ -4,153 +4,332 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>RichRoadLeather | $RRL</title>
+  <title>RichRoadLeather ($RRL)</title>
+
+  <meta name="description" content="Official website of RichRoadLeather ($RRL), a community-driven token on Solana.">
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #080808;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07090d;
       color: #ffffff;
       line-height: 1.6;
     }
 
-    header {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: rgba(7, 9, 13, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #20242d;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .brand span {
+      color: #d9df4a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      color: #aeb4bf;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* HERO */
+
+    .hero {
       min-height: 90vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 80px 20px;
       background:
-        radial-gradient(circle at top, #292929 0%, #080808 55%);
+        radial-gradient(circle at 50% 20%, #242b28 0%, #07090d 45%);
     }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #3b4030;
+      border-radius: 30px;
+      color: #d9df4a;
+      background: #12160e;
+      font-size: 14px;
       margin-bottom: 25px;
-      object-fit: cover;
-    }
-
-    .ticker {
-      font-size: 18px;
-      color: #aaa;
-      margin-bottom: 10px;
     }
 
     h1 {
-      font-size: clamp(48px, 12vw, 90px);
-      letter-spacing: 3px;
-      margin-bottom: 10px;
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 1;
+      margin-bottom: 25px;
+      letter-spacing: -3px;
     }
 
-    .tagline {
-      max-width: 650px;
-      color: #bdbdbd;
-      font-size: 20px;
-      margin-bottom: 30px;
+    h1 span {
+      color: #d9df4a;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #aeb4bf;
+      font-size: 19px;
     }
 
     .buttons {
+      margin-top: 35px;
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
       justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .button {
-      text-decoration: none;
-      color: #000;
-      background: #ffffff;
-      padding: 14px 28px;
+    .btn {
+      padding: 14px 24px;
       border-radius: 10px;
-      font-weight: bold;
+      font-weight: 700;
+      border: 1px solid #343a45;
+      background: #151922;
       transition: 0.2s;
     }
 
-    .button:hover {
+    .btn:hover {
       transform: translateY(-2px);
-      opacity: 0.85;
+      border-color: #d9df4a;
     }
 
-    .button.dark {
-      background: #1d1d1d;
-      color: #fff;
-      border: 1px solid #444;
+    .btn-primary {
+      background: #d9df4a;
+      color: #080a0d;
+      border-color: #d9df4a;
     }
+
+    /* SECTIONS */
 
     section {
-      padding: 80px 20px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
+      padding: 90px 25px;
     }
 
-    h2 {
-      font-size: 36px;
+    .section-title {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 45px;
     }
 
-    .card {
-      background: #121212;
-      border: 1px solid #292929;
-      border-radius: 18px;
-      padding: 30px;
-      margin-bottom: 20px;
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
     }
 
-    .card p {
-      color: #bbb;
+    .section-title p {
+      color: #8f96a3;
     }
 
-    .ca {
-      word-break: break-all;
-      background: #090909;
-      border: 1px solid #333;
-      padding: 18px;
-      border-radius: 10px;
-      margin: 15px 0;
-      color: #ddd;
-    }
+    /* CARDS */
 
-    .copy {
-      cursor: pointer;
-      border: none;
-      background: #fff;
-      color: #000;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .roadmap {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #222;
-      color: #777;
+    .card {
+      background: #10141b;
+      border: 1px solid #242a34;
+      border-radius: 18px;
+      padding: 28px;
     }
 
-    @media (max-width: 600px) {
-      .tagline {
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #969daa;
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    /* TOKEN */
+
+    .token-box {
+      background: linear-gradient(145deg, #11161d, #0c0f14);
+      border: 1px solid #292f3a;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .token-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid #242932;
+    }
+
+    .token-row:last-child {
+      border-bottom: none;
+    }
+
+    .token-label {
+      color: #8f96a3;
+    }
+
+    .token-value {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .contract {
+      color: #d9df4a;
+      word-break: break-all;
+      font-size: 14px;
+    }
+
+    /* ROADMAP */
+
+    .roadmap {
+      display: grid;
+      gap: 18px;
+    }
+
+    .phase {
+      padding: 25px;
+      border-left: 3px solid #d9df4a;
+      background: #10141b;
+      border-radius: 0 15px 15px 0;
+    }
+
+    .phase h3 {
+      color: #d9df4a;
+      margin-bottom: 7px;
+    }
+
+    .phase p {
+      color: #999faa;
+    }
+
+    /* COMMUNITY */
+
+    .community {
+      text-align: center;
+      padding: 70px 25px;
+      border: 1px solid #292f3a;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at center, #1d241b 0%, #0e1117 65%);
+    }
+
+    .community h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .community p {
+      color: #a2a8b3;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      border-top: 1px solid #20242d;
+      color: #707783;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: #d9df4a;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 60px 20px;
+      }
+
+      .hero p {
         font-size: 17px;
       }
 
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
       section {
-        padding: 60px 20px;
+        padding: 65px 20px;
+      }
+
+      .token-box {
+        padding: 22px;
+      }
+
+      .token-row {
+        display: block;
+      }
+
+      .token-value {
+        text-align: left;
+        margin-top: 5px;
+      }
+
+      .community h2 {
+        font-size: 32px;
       }
     }
   </style>
@@ -158,113 +337,219 @@
 
 <body>
 
-  <header>
+  <!-- NAVIGATION -->
 
-    <!-- Replace this with your logo URL later -->
-    <img class="logo"
-         src="https://via.placeholder.com/120"
-         alt="RichRoadLeather Logo">
+  <nav>
+    <div class="brand">
+      RichRoadLeather <span>$RRL</span>
+    </div>
 
-    <div class="ticker">$RRL • SOLANA</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#token">Token</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#community">Community</a>
+    </div>
+  </nav>
 
-    <h1>RichRoadLeather</h1>
 
-    <p class="tagline">
-      A community-driven Solana token built around community,
-      creativity and long-term vision.
-    </p>
+  <!-- HERO -->
 
-    <div class="buttons">
+  <header class="hero">
 
-      <!-- Replace with your real Pump.fun link -->
-      <a class="button"
-         href="YOUR_PUMPFUN_LINK"
-         target="_blank">
-        BUY $RRL
-      </a>
+    <div class="hero-content">
 
-      <!-- Replace with your X link -->
-      <a class="button dark"
-         href="YOUR_X_LINK"
-         target="_blank">
-        FOLLOW ON X
-      </a>
+      <div class="badge">
+        ⚡ Community-Driven · Built on Solana
+      </div>
+
+      <h1>
+        RichRoad<span>Leather</span>
+      </h1>
+
+      <p>
+        Welcome to the official home of RichRoadLeather ($RRL),
+        a community-driven token built on Solana.
+        Join the community and follow the journey.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://t.me/+cko6eZH2PFI3NmI0"
+          target="_blank">
+          🚀 Join Telegram
+        </a>
+
+        <a
+          class="btn"
+          href="https://x.com/espin5a"
+          target="_blank">
+          𝕏 Follow on X
+        </a>
+
+        <a
+          class="btn"
+          href="#token">
+          💎 View Token
+        </a>
+
+      </div>
 
     </div>
 
   </header>
 
 
-  <section>
+  <!-- ABOUT -->
 
-    <h2>About RRL</h2>
+  <section id="about">
 
-    <div class="card">
+    <div class="section-title">
+      <h2>The RRL Movement</h2>
 
       <p>
-        RichRoadLeather ($RRL) is a community-driven token
-        built on Solana. The vision is to create an active,
-        engaged community and continue growing the project
-        through transparency, creativity and consistent effort.
+        Built around community, creativity and participation.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon">🌎</div>
+        <h3>Community</h3>
+        <p>
+          A community-first project where members can
+          participate, create and help shape the RRL journey.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Solana</h3>
+        <p>
+          RRL operates on the Solana blockchain,
+          giving the project a fast and accessible ecosystem.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Growth</h3>
+        <p>
+          The goal is to build awareness through community
+          activity, content and consistent development.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TOKEN -->
+
+  <section id="token">
+
+    <div class="section-title">
+
+      <h2>Token Information</h2>
+
+      <p>
+        Official information for the RRL token.
       </p>
 
     </div>
 
-  </section>
+    <div class="token-box">
 
-
-  <section>
-
-    <h2>Token Information</h2>
-
-    <div class="card">
-
-      <p><strong>Ticker:</strong> $RRL</p>
-
-      <p><strong>Network:</strong> Solana</p>
-
-      <p><strong>Contract Address:</strong></p>
-
-      <div class="ca" id="contract">
-        YOUR_CONTRACT_ADDRESS
+      <div class="token-row">
+        <div class="token-label">Token Name</div>
+        <div class="token-value">RichRoadLeather</div>
       </div>
 
-      <button class="copy" onclick="copyCA()">
-        COPY CA
-      </button>
+      <div class="token-row">
+        <div class="token-label">Ticker</div>
+        <div class="token-value">$RRL</div>
+      </div>
+
+      <div class="token-row">
+        <div class="token-label">Network</div>
+        <div class="token-value">Solana</div>
+      </div>
+
+      <div class="token-row">
+        <div class="token-label">Contract Address</div>
+
+        <div class="token-value contract">
+          3avQwUjoTC68fExKn3nZCqm4ktDFC4XdLkEXhzfhpump
+        </div>
+      </div>
 
     </div>
 
   </section>
 
 
-  <section>
+  <!-- ROADMAP -->
 
-    <h2>Roadmap</h2>
+  <section id="roadmap">
+
+    <div class="section-title">
+
+      <h2>Roadmap</h2>
+
+      <p>
+        A simple path focused on building the RRL community.
+      </p>
+
+    </div>
 
     <div class="roadmap">
 
-      <div class="card">
-        <h3>01 — Community</h3>
+      <div class="phase">
+
+        <h3>Phase 1 — Foundation</h3>
+
         <p>
-          Build an active and engaged RRL community.
+          Establish the official website, social channels
+          and community spaces for RRL.
         </p>
+
       </div>
 
-      <div class="card">
-        <h3>02 — Visibility</h3>
+      <div class="phase">
+
+        <h3>Phase 2 — Community</h3>
+
         <p>
-          Expand awareness through content,
-          collaborations and social media.
+          Grow an active community through memes, discussions,
+          creative content and community participation.
         </p>
+
       </div>
 
-      <div class="card">
-        <h3>03 — Growth</h3>
+      <div class="phase">
+
+        <h3>Phase 3 — Expansion</h3>
+
         <p>
-          Continue developing the ecosystem and
-          bringing the project to a wider audience.
+          Increase awareness of RRL through partnerships,
+          creator collaborations and broader community outreach.
         </p>
+
+      </div>
+
+      <div class="phase">
+
+        <h3>Phase 4 — Long-Term Development</h3>
+
+        <p>
+          Continue developing the project based on community
+          feedback and sustainable long-term goals.
+        </p>
+
       </div>
 
     </div>
@@ -272,51 +557,62 @@
   </section>
 
 
-  <section>
+  <!-- COMMUNITY -->
 
-    <h2>Join The Community</h2>
+  <section id="community">
 
-    <div class="buttons">
+    <div class="community">
 
-      <a class="button"
-         href="YOUR_TELEGRAM_LINK"
-         target="_blank">
-        TELEGRAM
-      </a>
+      <h2>Join the RRL Community</h2>
 
-      <a class="button dark"
-         href="YOUR_DISCORD_LINK"
-         target="_blank">
-        DISCORD
-      </a>
+      <p>
+        Follow RichRoadLeather and become part of the community.
+        Stay updated with project news, announcements and future developments.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://t.me/+cko6eZH2PFI3NmI0"
+          target="_blank">
+          ✈️ Telegram
+        </a>
+
+        <a
+          class="btn"
+          href="https://x.com/espin5a"
+          target="_blank">
+          𝕏 X / Twitter
+        </a>
+
+      </div>
 
     </div>
 
   </section>
 
+
+  <!-- FOOTER -->
 
   <footer>
 
-    <p>© 2026 RichRoadLeather ($RRL)</p>
-    <p>Built on Solana.</p>
+    <p>
+      © 2026 <strong>RichRoadLeather ($RRL)</strong>
+    </p>
+
+    <p>
+      Built on Solana · Community Driven
+    </p>
+
+    <br>
+
+    <p>
+      This website is for informational and community purposes only.
+      Nothing on this website constitutes financial advice or a promise of returns.
+    </p>
 
   </footer>
-
-
-  <script>
-
-    function copyCA() {
-
-      const ca =
-        document.getElementById("contract").innerText;
-
-      navigator.clipboard.writeText(ca);
-
-      alert("Contract address copied!");
-
-    }
-
-  </script>
 
 </body>
 </html>
